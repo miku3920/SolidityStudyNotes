@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "ganache": "ganache --db ./db -i 3920 -d"
+  }
+}
