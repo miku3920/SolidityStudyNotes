@@ -4,5 +4,10 @@
     "compile": "truffle compile",
     "test": "truffle test",
     "deploy": "truffle deploy"
+  },
+  "dependencies": {
+    "ganache-cli": "^6.12.2",
+    "mocha": "^10.8.2",
+    "web3": "^4.15.0"
   }
 }
