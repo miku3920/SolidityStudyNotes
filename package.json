@@ -1,6 +1,7 @@
 {
   "scripts": {
     "ganache": "ganache --db .db -i 3920 -d",
+    "dashboard": "truffle dashboard",
     "compile": "truffle compile",
     "test": "truffle test",
     "deploy": "truffle deploy"
