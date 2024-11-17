@@ -13,11 +13,9 @@ describe('Chat', () => {
     it('get balance', async () => {
         const balance = await web3.eth.getBalance(accounts[0])
         console.log('balance[0]:', balance);
-
     })
 
     it('get accounts', () => {
         console.log('accounts[0]:', accounts[0]);
     })
-
 })

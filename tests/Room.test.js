@@ -15,5 +15,4 @@ describe('Room', () => {
     it('hsa an close function', () => {
         assert.strictEqual(room.close(), '......')
     })
-
 })
