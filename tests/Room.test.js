@@ -2,17 +2,18 @@ const assert = require('assert')
 const Room = require('../src/Room')
 
 describe('Room', () => {
-    let r1
+    let room
+
     beforeEach(() => {
-        r1 = new Room
+        room = new Room()
     })
 
     it('has an open function', () => {
-        assert.strictEqual(r1.open(), 'welcome')
+        assert.strictEqual(room.open(), 'welcome')
     })
 
     it('hsa an close function', () => {
-        assert.strictEqual(r1.close(), '......')
+        assert.strictEqual(room.close(), '......')
     })
 
 })
