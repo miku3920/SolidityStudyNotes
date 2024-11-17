@@ -1,5 +1,8 @@
 {
   "scripts": {
-    "ganache": "ganache --db .db -i 3920 -d"
+    "ganache": "ganache --db .db -i 3920 -d",
+    "compile": "truffle compile",
+    "test": "truffle test",
+    "deploy": "truffle deploy"
   }
 }

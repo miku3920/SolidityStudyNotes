@@ -7,7 +7,6 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "NomicFoundation.hardhat-solidity",
                 "trufflesuite-csi.truffle-vscode",
                 "ms-azuretools.vscode-docker",
                 "mhutchie.git-graph"
