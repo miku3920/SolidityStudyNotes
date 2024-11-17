@@ -11,4 +11,4 @@ RUN echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
 # Set `DEVCONTAINER` environment variable to help with orientation
 ENV DEVCONTAINER=true
 
-RUN npm install -g npm@8.19.4 truffle ganache
+RUN npm install -g npm@8.19.4 truffle@5.11.5 ganache@7.9.2
