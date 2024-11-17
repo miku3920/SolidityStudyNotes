@@ -2,14 +2,14 @@
 pragma solidity ^0.7.4;
 
 contract Demo8 {
-    address _owner;
+    address owner;
 
     constructor() {
-        _owner = msg.sender;
+        owner = msg.sender;
     }
 
     modifier onlyOwner() {
-        require(msg.sender == _owner);
+        require(msg.sender == owner);
         _;
     }
 
@@ -22,17 +22,17 @@ contract Demo8 {
 
 contract Register is Demo8 {
     mapping (address => bool) public registeredAddresses;
-    uint256 public _price;
+    uint256 public price;
 
     constructor(uint256 initPrice) {
-        _price = initPrice;
+        price = initPrice;
     }
 
-    function register() public payable costs(_price) {
+    function register() public payable costs(price) {
         registeredAddresses[msg.sender] = true;
     }
 
-    function changePrice(uint256 price) public onlyOwner {
-        _price = price;
+    function changePrice(uint256 _price) public onlyOwner {
+        price = _price;
     }
 }
