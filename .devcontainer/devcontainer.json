@@ -13,7 +13,8 @@
             "extensions": [
                 "trufflesuite-csi.truffle-vscode",
                 "ms-azuretools.vscode-docker",
-                "mhutchie.git-graph"
+                "mhutchie.git-graph",
+                "streetsidesoftware.code-spell-checker"
             ]
         }
     },
