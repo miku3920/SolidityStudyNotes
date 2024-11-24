@@ -27,4 +27,15 @@ contract CAC {
         require(msg.value > minimumFund);
         approvers.push(msg.sender);
     }
+
+    function createRequest(string memory des, uint256 value, address vendor) public onlyManager {
+        SpendingRequest memory req = SpendingRequest({
+            description: des,
+            value: value,
+            vendorAccount: vendor,
+            complete: false
+        });
+
+        requests.push(req);
+    }
 }
