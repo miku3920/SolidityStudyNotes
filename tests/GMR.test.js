@@ -18,4 +18,24 @@ contract('GMR', (accounts) => {
         console.log('balance[0]:', balance)
     })
 
+    it('deployed a contract', () => {
+        assert.ok(gmr.address)
+    })
+
+    it('get GMR balance', async () => {
+        const balance = await gmr.getBalance()
+        console.log('GMR balance:', balance)
+    })
+
+    it('enter game', async () => {
+        await gmr.enterGame({
+            from: accounts[1],
+            value: web3.utils.toWei('0.1', 'ether')
+        })
+
+        const players = await gmr.getCurrentPlayers()
+        console.log(players)
+        assert.strictEqual(players[0], accounts[1])
+        assert.strictEqual(players.length, 1)
+    })
 })
