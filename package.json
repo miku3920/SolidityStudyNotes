@@ -1,9 +1,10 @@
 {
   "scripts": {
     "ganache": "ganache --db .db -i 3920 -d",
+    "ganache-test": "ganache --db .db-test -i 3920 -d -p 7545",
     "dashboard": "truffle dashboard",
     "compile": "truffle compile",
-    "test": "truffle test",
+    "test": "truffle test --network test",
     "deploy": "truffle deploy"
   },
   "dependencies": {
