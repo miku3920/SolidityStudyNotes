@@ -33,4 +33,8 @@ contract GMR {
 
         players = new address payable[](0);
     }
+
+    function getCurrentPlayers() public view returns (address payable[] memory) {
+        return players;
+    }
 }
