@@ -2,13 +2,25 @@
 pragma solidity ^0.7.4;
 
 contract CAC {
+    struct SpendingRequest {
+        string description;
+        uint256 value;
+        address vendorAccount;
+        bool complete;
+    }
+    SpendingRequest[] public requests;
     address public manager;
     uint256 public minimumFund;
-    address[] approvers;
+    address[] public approvers;
 
     constructor(uint256 minimum) {
         manager = msg.sender;
         minimumFund = minimum;
+    }
+
+    modifier onlyManager() {
+        require(msg.sender == manager);
+        _;
     }
 
     function join() public payable {
