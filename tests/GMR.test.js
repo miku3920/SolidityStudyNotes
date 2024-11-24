@@ -33,7 +33,7 @@ contract('GMR', (accounts) => {
     it('enter game', async () => {
         await gmr.enterGame({
             from: accounts[1],
-            value: web3.utils.toWei('0.1', 'ether')
+            value: web3.utils.toWei('0.1', 'ether'),
         })
 
         const players = await gmr.getCurrentPlayers()
@@ -48,7 +48,7 @@ contract('GMR', (accounts) => {
         for (let account of joined) {
             await gmr.enterGame({
                 from: account,
-                value: web3.utils.toWei('0.1', 'ether')
+                value: web3.utils.toWei('0.1', 'ether'),
             })
         }
 
@@ -60,5 +60,47 @@ contract('GMR', (accounts) => {
         players.forEach((player, i) => {
             assert.strictEqual(player, accounts[i + 1])
         })
+    })
+
+    it('not enough ether should raise fail', async () => {
+        try {
+            await gmr.enterGame({
+                from: accounts[1],
+                value: web3.utils.toWei('0.01', 'ether'),
+            })
+
+            assert(false);
+        } catch (err) {
+            console.log(err.message)
+
+            assert.isAbove(
+                err.message.search('VM Exception while processing transaction'),
+                -1,
+                'VM Exception should happen'
+            )
+        }
+    })
+
+    it('only manager can draw', async () => {
+        try {
+            await gmr.enterGame({
+                from: accounts[1],
+                value: web3.utils.toWei('0.3', 'ether'),
+            })
+
+            await gmr.drawAndPayMoneyToWinner({
+                from: accounts[1],
+            })
+
+            assert(false);
+        } catch (err) {
+            console.log(err.message)
+
+            assert.isAbove(
+                err.message.search('VM Exception while processing transaction'),
+                -1,
+                'VM Exception should happen'
+            )
+        }
     })
 })
