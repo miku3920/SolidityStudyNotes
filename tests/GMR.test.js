@@ -8,8 +8,11 @@ contract('GMR', (accounts) => {
     let gmr
 
     beforeEach(async () => {
-        gmr = await GMR.deployed()
-        console.log('Deploy success!')
+        gmr = await GMR.new({
+            from: accounts[0],
+        })
+
+        console.log('New GMR!')
         console.log('GMR address:', gmr.address)
     })
 
@@ -35,7 +38,27 @@ contract('GMR', (accounts) => {
 
         const players = await gmr.getCurrentPlayers()
         console.log(players)
-        assert.strictEqual(players[0], accounts[1])
+
         assert.strictEqual(players.length, 1)
+        assert.strictEqual(players[0], accounts[1])
+    })
+
+    it('multiple enter', async () => {
+        const joined = [accounts[1], accounts[2], accounts[3]]
+        for (let account of joined) {
+            await gmr.enterGame({
+                from: account,
+                value: web3.utils.toWei('0.1', 'ether')
+            })
+        }
+
+        const players = await gmr.getCurrentPlayers()
+        console.log(players)
+
+        assert.strictEqual(players.length, 3)
+
+        players.forEach((player, i) => {
+            assert.strictEqual(player, accounts[i + 1])
+        })
     })
 })
